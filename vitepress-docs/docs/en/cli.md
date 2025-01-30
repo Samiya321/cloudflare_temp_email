@@ -77,13 +77,13 @@ compatibility_flags = [ "nodejs_compat" ]
 # TITLE = "Custom Title" # The title of the site
 PREFIX = "tmp" # The mailbox name prefix to be processed
 # (min, max) length of the adderss, if not set, the default is (1, 30)
+# MIN_ADDRESS_LEN = 1
+# MAX_ADDRESS_LEN = 30
 # ANNOUNCEMENT = "Custom Announcement"
 # address check REGEX, if not set, will not check
 # ADDRESS_CHECK_REGEX = "^(?!.*admin).*"
 # address name replace REGEX, if not set, the default is [^a-z0-9]
 # ADDRESS_REGEX = "[^a-z0-9]"
-# MIN_ADDRESS_LEN = 1
-# MAX_ADDRESS_LEN = 30
 # If you want your site to be private, uncomment below and change your password
 # PASSWORDS = ["123", "456"]
 # admin console password, if not configured, access to the console is not allowed
@@ -134,8 +134,14 @@ ENABLE_AUTO_REPLY = false
 # FRONTEND_URL = "https://xxxx.xxx"
 # Enable check junk mail
 # ENABLE_CHECK_JUNK_MAIL = false
+# junk mail check list, if status exists and status is not pass, will be marked as junk mail
+# JUNK_MAIL_CHECK_LIST = = ["spf", "dkim", "dmarc"]
 # junk mail force check pass list, if no status or status is not pass, will be marked as junk mail
 # JUNK_MAIL_FORCE_PASS_LIST = ["spf", "dkim", "dmarc"]
+# remove attachment if size exceed 2MB, mail maybe mising some information due to parsing
+# REMOVE_EXCEED_SIZE_ATTACHMENT = true
+# remove all attachment, mail maybe mising some information due to parsing
+# REMOVE_ALL_ATTACHMENT = true
 
 [[d1_databases]]
 binding = "DB"

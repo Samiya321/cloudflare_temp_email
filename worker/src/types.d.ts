@@ -44,11 +44,14 @@ export type Bindings = {
     FORWARD_ADDRESS_LIST: string | string[] | undefined
 
     ENABLE_CHECK_JUNK_MAIL: string | boolean | undefined
+    JUNK_MAIL_CHECK_LIST: string | string[] | undefined
     JUNK_MAIL_FORCE_PASS_LIST: string | string[] | undefined
 
     ENABLE_ANOTHER_WORKER: string | boolean | undefined
     ANOTHER_WORKER_LIST: string | AnotherWorker[] | undefined
 
+    REMOVE_ALL_ATTACHMENT: string | boolean | undefined
+    REMOVE_EXCEED_SIZE_ATTACHMENT: string | boolean | undefined
 
     // s3 config
     S3_ENDPOINT: string | undefined
@@ -107,5 +110,16 @@ type RPCEmailMessage = {
     from: string | undefined | null,
     to: string | undefined | null,
     rawEmail: string | undefined | null,
-    headers: Map<string, string>,
+    headers: object | undefined | null,
+}
+
+type ParsedEmailContext = {
+    rawEmail: string,
+    parsedEmail?: {
+        sender: string,
+        subject: string,
+        text: string,
+        html: string,
+        headers?: Record<string, string>[]
+    } | undefined
 }
